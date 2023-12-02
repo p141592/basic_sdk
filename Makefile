@@ -1,7 +1,7 @@
 include $(PWD)/.env
 export
 
-REGISTRY=cr.yandex/crpm77jd2scqv3d2m53e/gdshoplib
+REGISTRY=test
 
 
 test: 
@@ -26,3 +26,8 @@ release:
 	poetry publish --build
 
 push: build release
+
+
+docker: 
+	docker build -t ${REGISTRY} .
+	docker push ${REGISTRY}
